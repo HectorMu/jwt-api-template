@@ -42,10 +42,15 @@ controller.Login = async (req, res) => {
       process.env.ACCESS_TOKEN_SECRET
     );
 
+    const SessionData = {
+      ...serializedUser,
+      AccessToken,
+    };
+
     res.status(200).json({
       status: true,
       statusText: "User logged",
-      AccessToken,
+      SessionData,
     });
   } catch (error) {
     console.log(error);
